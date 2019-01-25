@@ -29,3 +29,4 @@ from reaching the control plane, and thus preserve network functionality. We imp
 reference SDN implementation, OpenFlow, and run a thorough set of experiments under different traffic and attack scenarios.
 We compared LineSwitch to the state of the art, and we show that it provides at the same time, the same level of protection
 against the control plane saturation attack, and a reduced time overhead by up to 30%.
+
