@@ -1,0 +1,31 @@
+Base paper 1- On Denial of Service Attacks in Software Defined Networks
+Software defined networking greatly simplifies network management by decoupling control functions from the network data plane. However, 
+such a decoupling also opens SDN to various denial of service attacks: an adversary can easily exhaust network resources by flooding 
+short-lived spoofed flows. Toward this issue, we present a comprehensive study of DoS attacks in SDN, and propose multi-layer fair queueing (MLFQ), a simple but
+effective DoS mitigation method. MLFQ enforces fair sharing of an SDN controller’s resources with multiple layers of queues, which can dyna-
+mically expand and aggregate according to controller load. Both testbed-based and emulation-based experiments demonstrate the effectiveness of MLFQ in
+mitigating DoS attacks targeted at SDN controller.
+
+Base Paper 2- SGuard: A Lightweight SDN Safe-Guard Architecture for DoS Attacks
+Software Defined Networking (SDN) is a revolutionary networking paradigm towards the future network, experiencing rapid development 
+nowadays. However, its main characteristic, the separation of control plane and data plane, also brings about new security challenges, i.e., Denial-of-Service (DoS) attacks
+specific to OpenFlow SDN networks to exhaust the control plane bandwidth and overload the buffer memory of OpenFlow switch. To mitigate the DoS attacks in the OpenFlow
+networks, we design and implement SGuard,a security application on top of the NOX controller that mainly contains two modules:Access control module and Classification
+module. We employ novel six-tuple as feature vector to classify traffic flows, meanwhile optimizing classification by feature ranking
+and selecting algorithms. All the modules will cooperate with each other to complete a series of tasks such as authorization, classification
+and so on. At the end of this paper, we experimentally use Mininet to evaluate SGuard in a software environment. The results show that 
+SGuard works efficiently and accurately without adding more overhead to the SDN networks.
+
+Base Paper3- LineSwitch: Tackling Control Plane Saturation Attacks in Software-Defined Networking
+
+Software defined networking (SDN) is a new networking paradigm that in recent years has revolutionized network architectures. At its core, SDN separates the data
+plane, which provides data forwarding functionalities, and the control plane, which implements the network control logic. The separation of these two components provides a virtually
+centralized point of control in the network, and at the same time abstracts the complexity of the underlying physical infrastructure.
+Unfortunately, while promising, the SDN approach also introduces new attacks and vulnerabilities. Indeed, previous research shows that, 
+under certain traffic conditions, the required communication between the control and data plane can result in a bottleneck. An attacker 
+can exploit this limitation to mount a new, network-wide, type of denial of service attack, known as the control plane saturation attack. This paper presents LineSwitch,
+an efficient and effective data plane solution to tackle the control plane saturation attack. LineSwitch employs probabilistic proxying and blacklisting of network traffic to prevent the attack
+from reaching the control plane, and thus preserve network functionality. We implemented LineSwitch as an extension of the
+reference SDN implementation, OpenFlow, and run a thorough set of experiments under different traffic and attack scenarios.
+We compared LineSwitch to the state of the art, and we show that it provides at the same time, the same level of protection
+against the control plane saturation attack, and a reduced time overhead by up to 30%.
