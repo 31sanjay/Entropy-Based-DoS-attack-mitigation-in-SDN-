@@ -1,0 +1,20 @@
+Title- Entropy Based mitigation of Distributed Denial-of-Service attack in Software Defined Network (SDN)
+
+Introduction
+SDN is three layer architecture- Application layer, Control layer, and Data layer.
+It provides the centralized control intelligence and programmable network by decoupling the network control and data plane.
+It provides a dynamic, cost-effective, manageable and agile platform for configuration of the network.
+The centralized platform brings the new security challenges such as DDoS attack.
+The proposed research will be to prevent DDoS attack on control plane based on Entropy
+
+SDN Architecure
+
+
+Problem Statement
+Prevention of DoS attack on control plane of SDN.
+The Implementation of mechanism to establish trust between controller, switches, and hosts.
+
+Issues in the problem
+Prompt to DoS attack because of limited switch buffer size.
+Integrity check not available for the Link Layer Discovery Protocol (LLDP) used by the SDN controller for discovery of the network topology.
+No mechanism for authentication of request packet reaching to controller of SDN.
