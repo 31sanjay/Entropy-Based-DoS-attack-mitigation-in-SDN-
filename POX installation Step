@@ -1,1 +1,6 @@
 
+sudo apt-get install git
+
+make clone from github
+
+git clone http://github.com/noxrepo/pox
