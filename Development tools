@@ -1,0 +1,102 @@
+sudo mn --topo single,3 --mac --switch ovsk --controller remote
+this tells-
+
+    Created 3 virtual hosts, each with a separate IP address.
+    Created a single OpenFlow software switch in the kernel with 3 ports.
+    Connected each virtual host to the switch with a virtual ethernet cable.
+    Set the MAC address of each host equal to its IP.
+    Configure the OpenFlow switch to connect to a remote controller.
+
+MININET BRIEF INTRODUCTION
+
+To see the list of nodes available, in the Mininet console, run: 
+ mininet> nodes
+ 
+ To see a list of available commands, in the Mininet console, run: 
+  mininet> help
+  
+  To run a single command on a node, prepend the command with the name of the node. For example, to check the IP of a virtual host,
+  in the Mininet console, run:
+   mininet> h1 ifconfig
+   
+   If Mininet is not working correctly (or has crashed and needs to be restarted), first quit Mininet if necessary 
+   (using the exit command, or control-D), and then try clearing any residual state or processes using: 
+    $ sudo mn -c
+    
+    
+    OVS-OFCTL EXAMPLE AND USAGES
+    
+    ovs-ofctl is a utility that comes with Open vSwitch and enables visibility and control over a single switch's flow table.
+    It is especially useful for debugging, by viewing flow state and flow counters. Most OpenFlow switches can start up with a passive
+    listening port, from which you can poll the switch, without having to add debugging code to the controller. 
+    Create a second SSH window if you don't already have one, and run:
+
+ $ ovs-ofctl show s1
+
+One user reports the need to prepend with sudo, otherwise a "permission denied" comes back:
+
+ $ sudo ovs-ofctl show s1
+ 
+ The show command connects to the switch and dumps out its port state and capabilities.
+
+Here's a more useful command:
+
+ $ sudo ovs-ofctl dump-flows s1
+ 
+ 
+ PING TEST
+ 
+ Now, go back to the mininet console and try to ping h2 from h1. In the Mininet console:
+
+ mininet> h1 ping -c3 h2
+
+
+As you saw before, switch flow table is empty. Besides that, there is no controller connected to the switch and therefore the switch doesn't know what to do with incoming traffic, leading to ping failure.
+
+You'll use ovs-ofctl to manually install the necessary flows. In your SSH terminal:
+
+ # ovs-ofctl add-flow s1 in_port=1,actions=output:2
+ # ovs-ofctl add-flow s1 in_port=2,actions=output:1
+
+This will forward packets coming at port 1 to port 2 and vice-verca. Verify by checking the flow-table
+
+ # ovs-ofctl dump-flows s1
+
+Run the ping command again. In your mininet console:
+
+ mininet> h1 ping -c3 h2
+
+Benchmark Controller w/iperf
+................................................
+...............................................
+
+iperf is a command-line tool for checking speeds between two computers.
+
+Here, you'll benchmark the reference controller; later, you'll compare this with the provided hub controller, and your flow-based switch (when you've implemented it).
+
+In the mininet console run :
+
+ mininet> iperf
+
+This Mininet command runs an iperf TCP server on one virtual host, then runs an iperf client on a second virtual host. Once connected, they blast packets between each other and report the results.
+
+Now compare with the user-space switch. In the mininet console:
+
+ mininet> exit
+
+
+Exit from mininet use the following command 
+
+ mininet> exit
+ 
+ 
+ ...............................................
+ COMMIT
+ ...............................................
+
+ 
+
+
+    
+   
+
