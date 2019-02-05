@@ -1,0 +1,3 @@
+$ sudo mn --switch ovsk --topo tree,depth=2,fanout=8 -- controller=remote,ip=127.0.0.1,port=6633
+
+This is topology of the project.
